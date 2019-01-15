@@ -12,4 +12,4 @@ Example
 -----
 box rotation:
 
-![example0.png](https://github.com/hunterlew/stereo_matching/blob/master/boxtool/box_rotation_example.png)
+![example0.png](https://github.com/hunterlew/boxtool/blob/master/boxtool/box_rotation_example.png)
