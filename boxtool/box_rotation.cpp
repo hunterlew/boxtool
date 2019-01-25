@@ -1,7 +1,7 @@
-#include <opencv2\core.hpp>
-#include <opencv2\highgui.hpp>
-#include <Eigen\Core>
-#include <Eigen\Dense>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/Dense>
 #include <vector>
 #include <iostream>
 
