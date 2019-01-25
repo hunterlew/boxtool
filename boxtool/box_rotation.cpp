@@ -34,6 +34,22 @@ static cv::Point map2pixel(cv::Point2f pt)
 	return map2pixel(pt.x, pt.y);
 }
 
+static void box_rot_new(float yaw, std::vector<cv::Point2f> &v)
+{
+	assert(v.size() == 4);
+	
+	yaw *= pi / 180;
+	Eigen::Quaterniond q(cos(yaw/2), 0, 0, sin(yaw/2));
+
+	for (auto &pt : v)
+	{
+		Eigen::Vector3d vec(pt.x, pt.y, 0);
+		vec = q * vec;
+		pt.x = vec(0);
+		pt.y = vec(1);
+	}
+}
+
 static void box_rot(float yaw, std::vector<cv::Point2f> &v)
 {
 	assert(v.size() == 4);
@@ -88,7 +104,8 @@ static void draw_box(cv::Mat &m, BoxObject obj)
 	corner[2].y = box_width / 2;
 	corner[3].x = box_length / 2;
 	corner[3].y = box_width / 2;
-	box_rot(yaw, corner);
+	// box_rot(yaw, corner);
+	box_rot_new(yaw, corner);
 	for (auto &pt : corner)
 	{
 		pt.x += x;
